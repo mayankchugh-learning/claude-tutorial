@@ -17,9 +17,16 @@ python -m http.server 8080
 
 Open [http://localhost:8080](http://localhost:8080).
 
+## Portfolio integration
+
+Linked to [mayankchugh-learning.github.io](https://mayankchugh-learning.github.io/) (Portfolio, Learning hub, Book a call).  
+See **[INTEGRATION.md](INTEGRATION.md)** to add the course card on your profile site.
+
 ## Deploy
 
 See **[DEPLOY.md](DEPLOY.md)** for GitHub Pages, Cloudflare Pages, Netlify, Render, and Vercel.
+
+**Live URL (GitHub Pages):** `https://mayankchugh-learning.github.io/claude-tutorial/`
 
 **Fastest path:** push to GitHub → enable **GitHub Pages** (workflow in `.github/workflows/pages.yml`) or connect the repo to any host with **publish directory = root** (`.`).
 

@@ -11,14 +11,22 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/main.css" />
+  <script src="js/site-config.js"></script>
 </head>
 <body>
+  <div class="profile-strip">
+    <a data-profile-href="profile" href="https://mayankchugh-learning.github.io/">← Mayank Chugh</a>
+    ·
+    <a data-profile-href="learning" href="https://mayankchugh-learning.github.io/#learning">Learning hub</a>
+  </div>
   <header class="site-header">
     <div class="header-inner">
       <a class="logo" href="index.html">Learn<span>Claude</span></a>
       <nav class="header-nav">
+        <a data-profile-href="profile" href="https://mayankchugh-learning.github.io/">Portfolio</a>
         <a href="index.html">Home</a>
         <a href="slash-commands.html">Slash Commands</a>
+        <a class="nav-cta" data-profile-href="consulting" href="https://mayankchugh-learning.github.io/#consulting">Book a call</a>
       </nav>
     </div>
   </header>
@@ -594,8 +602,15 @@ description: Deploy the app to staging
   </div>
 
   <footer class="footer">
-    <p>Curated by Mayank Chugh · <a href="index.html">Back to home</a></p>
+    <p>
+      <a data-profile-href="profile" href="https://mayankchugh-learning.github.io/">Mayank Chugh</a>
+      · <a href="index.html">Course home</a>
+    </p>
+    <p class="footer-links">
+      <a data-profile-href="consulting" href="https://mayankchugh-learning.github.io/#consulting">Book a call</a>
+    </p>
   </footer>
+  <script src="js/profile-nav.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
