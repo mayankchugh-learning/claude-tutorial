@@ -262,6 +262,7 @@ Wait 1–3 minutes (GitHub Pages can take up to 10 minutes on first publish).
 | GitHub URL includes repo name | Project site URL | Use `https://user.github.io/REPO_NAME/` (expected) |
 | Render build fails | Empty build rejected | Use `echo "Static HTML — no build"` |
 | Workflow not running | Wrong branch | Workflow triggers on `main`; rename branch or edit `pages.yml` |
+| “There isn’t a GitHub Pages site here” after going private | Pages requires a **public** repo on GitHub Free | Set repo to **Public**, re-enable **Settings → Pages → GitHub Actions**, push to `main` (or re-run the deploy workflow) |
 | Vercel runs `npm install` / build fails | Framework auto-detected | Set preset to **Other**; empty build and install commands |
 | Vercel 404 on pages | Wrong output directory | Output = `.`; check `vercel.json` |
 

@@ -30,6 +30,8 @@ See **[DEPLOY.md](DEPLOY.md)** for GitHub Pages, Cloudflare Pages, Netlify, Rend
 
 **Fastest path:** push to GitHub → enable **GitHub Pages** (workflow in `.github/workflows/pages.yml`) or connect the repo to any host with **publish directory = root** (`.`).
 
+**Note:** On GitHub Free, the repository must stay **public** for `*.github.io` Pages to work. See [DEPLOY.md — Troubleshooting](DEPLOY.md#troubleshooting) if the site 404s after a visibility change.
+
 ## Project structure
 
 ```
