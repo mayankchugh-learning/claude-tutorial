@@ -1,0 +1,27 @@
+<svg width="100%" viewBox="0 0 800 260" role="img" xmlns="http://www.w3.org/2000/svg">
+
+      <!-- Without -->
+      <rect x="30" y="20" width="340" height="220" rx="14" fill="rgba(248,113,113,0.05)" stroke="rgba(248,113,113,0.2)" stroke-width="1.5"/>
+      <text x="200" y="50" text-anchor="middle" fill="#f87171" font-family="Space Grotesk" font-weight="600" font-size="14">Without claude.md</text>
+      <rect x="50" y="65" width="300" height="40" rx="8" fill="rgba(248,113,113,0.1)" stroke="rgba(248,113,113,0.3)" stroke-width="1"/>
+      <text x="200" y="81" text-anchor="middle" fill="#f87171" font-family="Space Grotesk" font-size="12">Prompt: "create pandas function"</text>
+      <text x="200" y="97" text-anchor="middle" fill="#4b5563" font-family="Space Grotesk" font-size="11">uses snake_case (random LLM default)</text>
+      <text x="200" y="125" text-anchor="middle" fill="#4b5563" font-family="Space Grotesk" font-size="12">→ create_data_frame()</text>
+      <text x="200" y="145" text-anchor="middle" fill="#4b5563" font-family="Space Grotesk" font-size="12">→ no docstrings</text>
+      <text x="200" y="165" text-anchor="middle" fill="#4b5563" font-family="Space Grotesk" font-size="12">→ no type hints</text>
+      <text x="200" y="185" text-anchor="middle" fill="#4b5563" font-family="Space Grotesk" font-size="12">→ inconsistent with your codebase</text>
+      <text x="200" y="220" text-anchor="middle" fill="#6b7280" font-family="Space Grotesk" font-size="11">❌ Must re-prompt every time</text>
+
+      <!-- With -->
+      <rect x="430" y="20" width="340" height="220" rx="14" fill="rgba(52,211,153,0.05)" stroke="rgba(52,211,153,0.2)" stroke-width="1.5"/>
+      <text x="600" y="50" text-anchor="middle" fill="#34d399" font-family="Space Grotesk" font-weight="600" font-size="14">With claude.md</text>
+      <rect x="450" y="65" width="300" height="40" rx="8" fill="rgba(52,211,153,0.1)" stroke="rgba(52,211,153,0.3)" stroke-width="1"/>
+      <text x="600" y="81" text-anchor="middle" fill="#34d399" font-family="Space Grotesk" font-size="12">Same prompt — automatic context</text>
+      <text x="600" y="97" text-anchor="middle" fill="#4b5563" font-family="Space Grotesk" font-size="11">reads standards before every response</text>
+      <text x="600" y="125" text-anchor="middle" fill="#4b5563" font-family="Space Grotesk" font-size="12">→ createDataFrame() (camelCase ✓)</text>
+      <text x="600" y="145" text-anchor="middle" fill="#4b5563" font-family="Space Grotesk" font-size="12">→ rich docstrings ✓</text>
+      <text x="600" y="165" text-anchor="middle" fill="#4b5563" font-family="Space Grotesk" font-size="12">→ type hints ✓</text>
+      <text x="600" y="185" text-anchor="middle" fill="#4b5563" font-family="Space Grotesk" font-size="12">→ matches your organization's style</text>
+      <text x="600" y="220" text-anchor="middle" fill="#34d399" font-family="Space Grotesk" font-size="11">✓ Zero extra prompting</text>
+    
+</svg>

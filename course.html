@@ -90,6 +90,10 @@
           the <code>.claude</code> folder, CLAUDE.md, context management, skills, hooks, MCP,
           sub-agents, agent teams, plugins, scheduling, and a capstone full-stack build.</p>
         </div>
+        <div class="callout callout-tip">
+          <strong>Illustrated modules</strong>
+          <p>Each section includes architecture diagrams and practical examples — model tiers, agentic loop, CLAUDE.md, skills, MCP, hooks, and more.</p>
+        </div>
         <div class="tag-row">
           <span class="tag">Claude.ai</span>
           <span class="tag">Claude Code</span>
@@ -117,6 +121,10 @@
         </p>
         <h3>The Claude model family</h3>
         <p>Claude models are organized into tiers, each optimized for different trade-offs:</p>
+        <figure class="diagram">
+          <img src="assets/model_hierarchy.svg" alt="Anthropic parent company and Claude model tiers: Haiku, Sonnet, Opus" loading="lazy" />
+          <figcaption>Anthropic builds Claude — Haiku (fast), Sonnet (balanced), Opus (most capable)</figcaption>
+        </figure>
         <table class="compare-table">
           <thead>
             <tr><th>Model</th><th>Strength</th><th>Best for</th></tr>
@@ -156,6 +164,10 @@
           <strong>Key insight</strong>
           <p>Claude on the web is a conversation with a brain. Claude Code is that same brain
           with hands — it can read files, run commands, and change your project.</p>
+        </div>
+        <div class="callout callout-info">
+          <strong>Model pick for daily coding</strong>
+          <p><strong>Sonnet</strong> is the sweet spot for most Claude Code sessions — strong enough for real work without Opus-level cost. Use Haiku for sub-agents and high-volume tasks; reserve Opus for the hardest reasoning.</p>
         </div>
       </section>
 
@@ -228,6 +240,17 @@ Claude Code:
           yourself.
         </p>
         <figure class="diagram">
+          <img src="assets/claude_code_architecture.svg" alt="Claude Code architecture from user prompt to LLM to tools" loading="lazy" />
+          <figcaption>Under the hood: your prompt → Claude LLM → tool calls (read, bash, search) → results on disk</figcaption>
+        </figure>
+        <h3>Built-in tools</h3>
+        <ul>
+          <li><strong>read / write / edit</strong> — create and modify project files</li>
+          <li><strong>bash</strong> — run terminal commands (install, test, git)</li>
+          <li><strong>glob / grep</strong> — search the codebase efficiently</li>
+          <li><strong>web_search / web_fetch</strong> — look up docs and live information</li>
+        </ul>
+        <figure class="diagram">
           <img src="assets/agentic_loop_flowchart.svg" alt="Claude Code agentic loop flowchart" />
           <figcaption>The seven-step agentic loop: task → context → plan → act → observe → iterate → report</figcaption>
         </figure>
@@ -255,10 +278,18 @@ Claude Code:
           Claude Code runs on Windows, macOS, and Linux. The recommended install is via the
           official installer script in your terminal.
         </p>
+        <h3>Prerequisites</h3>
+        <ul>
+          <li>Basic terminal comfort (no deep coding required — Claude does the heavy lifting)</li>
+          <li>VS Code or Cursor recommended for the Claude Code extension</li>
+          <li>Anthropic API credits (pay-as-you-go) or Claude Pro/Max subscription</li>
+        </ul>
         <h3>Windows (PowerShell)</h3>
         <pre><code>irm https://claude.ai/install.ps1 | iex</code></pre>
         <h3>macOS / Linux</h3>
-        <pre><code>curl -fsSL https://claude.ai/install.sh | bash</code></pre>
+        <pre><code>curl -fsSL https://claude.ai/install.sh | bash
+# Alternative:
+npm install -g @anthropic-ai/claude-code</code></pre>
         <h3>Verify installation</h3>
         <pre><code>claude --version
 claude</code></pre>
@@ -287,7 +318,11 @@ claude</code></pre>
         <div class="callout callout-tip">
           <strong>Path issues on Windows?</strong>
           <p>If <code>claude</code> is not recognized after install, restart your terminal or add
-          the install directory to your PATH. Re-run the installer if needed.</p>
+          the install path from the installer output to <strong>System → Environment Variables → Path</strong>, then reopen the terminal.</p>
+        </div>
+        <div class="callout callout-info">
+          <strong>API billing tip</strong>
+          <p>At <a href="https://console.anthropic.com">console.anthropic.com</a>, add a small credit balance (e.g. $10) for learning. You pay only for tokens used — no monthly lock-in like a subscription.</p>
         </div>
       </section>
 
@@ -318,6 +353,10 @@ claude</code></pre>
           <code>/memory</code>, <code>/config</code>, <code>/status</code>, and <code>/doctor</code>
           that interact with this folder.
         </p>
+        <div class="callout callout-tip">
+          <strong>Share with your team</strong>
+          <p>Commit <code>.claude/</code> to git so everyone gets the same CLAUDE.md, skills, agents, and hooks — no per-developer setup.</p>
+        </div>
       </section>
 
       <!-- 07 CLAUDE.MD -->
@@ -329,6 +368,10 @@ claude</code></pre>
           It is loaded automatically at the start of every session and gives Claude permanent
           context about your project.
         </p>
+        <figure class="diagram">
+          <img src="assets/claude_md_with_without.svg" alt="Coding output with and without CLAUDE.md standards" loading="lazy" />
+          <figcaption>Without CLAUDE.md, style drifts; with it, conventions apply on every prompt automatically</figcaption>
+        </figure>
         <figure class="diagram">
           <img src="assets/claude_md_project_brain.svg" alt="CLAUDE.md as project brain diagram" />
           <figcaption>CLAUDE.md feeds rules, stack, and conventions into every session</figcaption>
@@ -359,6 +402,10 @@ claude</code></pre>
           Claude merges both. Update it as your project evolves — it is living documentation
           for your AI pair programmer.
         </p>
+        <div class="callout callout-warn">
+          <strong>Keep it lean</strong>
+          <p>Every line in CLAUDE.md loads every session. Aim for under ~200 lines — specific rules, not essays. Put long workflows in <strong>skills</strong> instead (loaded only when invoked).</p>
+        </div>
       </section>
 
       <!-- 08 CONTEXT -->
@@ -401,6 +448,10 @@ claude</code></pre>
           Skills are markdown instruction files (<code>SKILL.md</code>) that encode repeatable
           workflows. Invoke them with a slash command instead of re-explaining the process every time.
         </p>
+        <figure class="diagram">
+          <img src="assets/skills_workflow.svg" alt="Skills workflow from developer to SKILL.md to automated execution" loading="lazy" />
+          <figcaption>Write the skill once → invoke with <code>/skill-name</code> → Claude follows your steps every time</figcaption>
+        </figure>
         <pre><code>.claude/skills/deploy/SKILL.md
 
 ---
@@ -417,10 +468,28 @@ description: Deploy the app to staging
           Skills live in <code>.claude/skills/</code> (project) or your user skills directory (global).
           They cost zero tokens until invoked — Claude reads the skill only when you trigger it.
         </p>
+        <pre><code>.claude/skills/my-skill/
+├── SKILL.md       # steps (loaded only when invoked)
+├── scripts/       # optional: pre-written Python/shell
+└── references/    # optional: docs Claude should read</code></pre>
+        <div class="compare-columns">
+          <div>
+            <strong>Direct invocation</strong>
+            <code>/deploy</code> — follows your skill exactly; best for repeatable automation.
+          </div>
+          <div>
+            <strong>Natural language</strong>
+            “Deploy to staging using my skill” — Claude picks the skill from its description, may improvise slightly.
+          </div>
+        </div>
         <div class="callout callout-info">
           <strong>Skills vs. CLAUDE.md</strong>
           <p>CLAUDE.md is always loaded. Skills are on-demand playbooks for specific workflows
           like code review, deployment, or writing PR descriptions.</p>
+        </div>
+        <div class="callout callout-tip">
+          <strong>Pre-write scripts</strong>
+          <p>Point skills at <code>scripts/</code> files instead of regenerating code each run — saves thousands of tokens and keeps behavior consistent.</p>
         </div>
       </section>
 
@@ -433,9 +502,20 @@ description: Deploy the app to staging
           They enforce standards, log activity, and guard security.
         </p>
         <figure class="diagram">
+          <img src="assets/hooks_timeline.svg" alt="Hook timeline from session start through pre and post tool use" loading="lazy" />
+          <figcaption>Hooks attach to lifecycle events — especially PreToolUse and PostToolUse</figcaption>
+        </figure>
+        <figure class="diagram">
           <img src="assets/hook_event_flow.svg" alt="Hook event flow diagram" />
           <figcaption>Hooks fire on SessionStart, PreToolUse, PostToolUse, and other events</figcaption>
         </figure>
+        <h3>Popular use cases</h3>
+        <ul>
+          <li><strong>Security</strong> — block <code>rm -rf</code> or force-push before execution</li>
+          <li><strong>Logging</strong> — record every tool call to a file (zero LLM tokens)</li>
+          <li><strong>Notifications</strong> — ping Slack or play a sound when Claude needs input</li>
+          <li><strong>Validation</strong> — run lint/tests automatically after file writes</li>
+        </ul>
         <h3>Example: auto-format on file write</h3>
         <pre><code>// hooks.json
 {
@@ -464,11 +544,34 @@ description: Deploy the app to staging
         <p>
           MCP (Model Context Protocol) is an open standard that lets Claude connect to external
           tools and data sources: GitHub, Slack, databases, browsers, custom APIs, and more.
+          Think of it as a <strong>USB-C port</strong> — one config format works across Claude Code, Cursor, and VS Code.
         </p>
+        <figure class="diagram">
+          <img src="assets/mcp_clients_config.svg" alt="MCP clients, shared config, and external MCP servers" loading="lazy" />
+          <figcaption>Clients share <code>.mcp.json</code> — servers expose tools like search, GitHub, or Playwright</figcaption>
+        </figure>
         <figure class="diagram">
           <img src="assets/mcp_architecture.svg" alt="MCP architecture diagram" />
           <figcaption>Claude Code ↔ MCP servers ↔ external services</figcaption>
         </figure>
+        <h3>Local vs. hosted servers</h3>
+        <table class="compare-table">
+          <thead>
+            <tr><th>Type</th><th>How it runs</th><th>Best for</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Local (stdio)</strong></td>
+              <td><code>uvx</code> or <code>npx</code> on your machine</td>
+              <td>Most MCP servers today — secure stdin/stdout</td>
+            </tr>
+            <tr>
+              <td><strong>Hosted (HTTP)</strong></td>
+              <td>Provider URL + API key</td>
+              <td>Tavily search, managed APIs — no local install</td>
+            </tr>
+          </tbody>
+        </table>
         <h3>How it works</h3>
         <ol>
           <li>You configure MCP servers in Claude Code settings.</li>
@@ -486,6 +589,10 @@ description: Deploy the app to staging
           MCP turns Claude from a local coding agent into a hub for your entire toolchain.
           Combine it with live web search and browser automation for research-heavy tasks.
         </p>
+        <div class="callout callout-warn">
+          <strong>Trust MCP servers</strong>
+          <p>Only install servers you trust — they run with access mediated by Claude. Prefer well-known providers (e.g. Microsoft Playwright MCP) and check source before adding community servers.</p>
+        </div>
       </section>
 
       <!-- 12 SUB-AGENTS -->
@@ -496,6 +603,10 @@ description: Deploy the app to staging
           Sub-agents are separate Claude sessions spawned for focused tasks. They run in
           <strong>isolated context windows</strong>, so exploration does not bloat your main conversation.
         </p>
+        <figure class="diagram">
+          <img src="assets/sub_agents_detailed.svg" alt="Sub-agents with isolated context and restricted tools" loading="lazy" />
+          <figcaption>Each sub-agent: cheaper model, limited tools, isolated context — reports back to parent</figcaption>
+        </figure>
         <figure class="diagram">
           <img src="assets/sub_agent_architecture.svg" alt="Sub-agent architecture diagram" />
           <figcaption>Main session delegates to specialist sub-agents with clean context</figcaption>
@@ -521,9 +632,17 @@ description: Deploy the app to staging
           same project, coordinating directly with each other.
         </p>
         <figure class="diagram">
+          <img src="assets/agent_teams_flow.svg" alt="Agent teams with shared task list and peer communication" loading="lazy" />
+          <figcaption>Agent teams: shared tasks, teammates coordinate directly (experimental)</figcaption>
+        </figure>
+        <figure class="diagram">
           <img src="assets/agent_teams_vs_sub_agents.svg" alt="Agent teams vs sub-agents diagram" />
           <figcaption>Sub-agents report to main session; agent teams coordinate peer-to-peer</figcaption>
         </figure>
+        <div class="callout callout-warn">
+          <strong>Experimental</strong>
+          <p>Agent Teams are beta — enable with <code>"experimental_agent_teams": true</code> in <code>.claude/settings.json</code>. Avoid production-critical workflows until stable.</p>
+        </div>
         <table class="compare-table">
           <thead>
             <tr><th>Feature</th><th>Sub-agents</th><th>Agent Teams</th></tr>
@@ -558,8 +677,16 @@ description: Deploy the app to staging
         <ul>
           <li><strong>Cron / Task Scheduler</strong> — run <code>claude -p "your prompt"</code> on a timer.</li>
           <li><strong>CI/CD integration</strong> — GitHub Actions with Claude for PR review.</li>
-          <li><strong>Loop skills</strong> — recurring local intervals for monitored background work.</li>
+          <li><strong><code>/loop</code></strong> — schedule prompts inside a session (e.g. <code>/loop 30m check deployment</code> or cron syntax <code>/loop "0 9 * * *" run daily review</code>).</li>
         </ul>
+        <pre><code># /loop examples (Claude Code 2.1.72+)
+/loop 30m check if the deployment finished
+/loop "0 9 * * *" invoke my fetch-api skill
+/cron delete &lt;job-id&gt;   # cancel a scheduled job</code></pre>
+        <div class="callout callout-warn">
+          <strong>Session-based scheduling</strong>
+          <p><code>/loop</code> runs while your terminal session is active. For true background jobs, use system cron calling <code>claude -p "…"</code>.</p>
+        </div>
       </section>
 
       <!-- 15 CAPSTONE -->

@@ -5,7 +5,7 @@ A **static**, self-contained HTML course for Claude, Claude Code, MCP, skills, h
 | Page | File |
 |------|------|
 | Landing | [`index.html`](index.html) |
-| Full course (15 modules) | [`course.html`](course.html) |
+| Full course (15 modules, illustrated) | [`course.html`](course.html) |
 | Slash commands reference | [`slash-commands.html`](slash-commands.html) |
 
 ## Local preview

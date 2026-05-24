@@ -1,0 +1,42 @@
+<svg width="100%" viewBox="0 0 800 260" role="img" xmlns="http://www.w3.org/2000/svg">
+
+      <!-- Parent / Team Lead -->
+      <rect x="290" y="20" width="220" height="60" rx="12" fill="rgba(124,109,250,0.18)" stroke="rgba(124,109,250,0.6)" stroke-width="2"/>
+      <text x="400" y="46" text-anchor="middle" fill="#c4b5fd" font-family="Space Grotesk" font-weight="700" font-size="14">Claude Code (Team Lead)</text>
+      <text x="400" y="64" text-anchor="middle" fill="#7c6dfa" font-family="Space Grotesk" font-size="11">Creates shared task list · Delegates · Monitors</text>
+
+      <!-- Shared task list -->
+      <rect x="320" y="100" width="160" height="70" rx="10" fill="rgba(251,191,36,0.1)" stroke="rgba(251,191,36,0.4)" stroke-width="1.5"/>
+      <text x="400" y="124" text-anchor="middle" fill="#fbbf24" font-family="Space Grotesk" font-weight="600" font-size="13">Shared Tasks</text>
+      <text x="400" y="142" text-anchor="middle" fill="#a09bb8" font-family="Space Grotesk" font-size="11">[ ] Fetch all APIs</text>
+      <text x="400" y="158" text-anchor="middle" fill="#a09bb8" font-family="Space Grotesk" font-size="11">[ ] Generate docs  [ ] Review</text>
+
+      <!-- Lines from parent to task list -->
+      <line x1="400" y1="80" x2="400" y2="100" stroke="rgba(124,109,250,0.4)" stroke-width="1.5"/>
+
+      <!-- Lines from task list to teammates -->
+      <line x1="370" y1="170" x2="200" y2="200" stroke="rgba(251,191,36,0.3)" stroke-width="1.5" stroke-dasharray="5,3"/>
+      <line x1="400" y1="170" x2="400" y2="200" stroke="rgba(251,191,36,0.3)" stroke-width="1.5" stroke-dasharray="5,3"/>
+      <line x1="430" y1="170" x2="600" y2="200" stroke="rgba(251,191,36,0.3)" stroke-width="1.5" stroke-dasharray="5,3"/>
+
+      <!-- Teammate 1 -->
+      <rect x="100" y="200" width="160" height="50" rx="10" fill="rgba(56,189,248,0.1)" stroke="rgba(56,189,248,0.35)" stroke-width="1.5"/>
+      <text x="180" y="222" text-anchor="middle" fill="#38bdf8" font-family="Space Grotesk" font-weight="600" font-size="13">Teammate A</text>
+      <text x="180" y="238" text-anchor="middle" fill="#4b5563" font-family="Space Grotesk" font-size="11">Data Fetcher</text>
+
+      <!-- Teammate 2 -->
+      <rect x="320" y="200" width="160" height="50" rx="10" fill="rgba(52,211,153,0.1)" stroke="rgba(52,211,153,0.35)" stroke-width="1.5"/>
+      <text x="400" y="222" text-anchor="middle" fill="#34d399" font-family="Space Grotesk" font-weight="600" font-size="13">Teammate B</text>
+      <text x="400" y="238" text-anchor="middle" fill="#4b5563" font-family="Space Grotesk" font-size="11">Migrator</text>
+
+      <!-- Teammate 3 -->
+      <rect x="540" y="200" width="160" height="50" rx="10" fill="rgba(251,191,36,0.08)" stroke="rgba(251,191,36,0.3)" stroke-width="1.5"/>
+      <text x="620" y="222" text-anchor="middle" fill="#fbbf24" font-family="Space Grotesk" font-weight="600" font-size="13">Teammate C</text>
+      <text x="620" y="238" text-anchor="middle" fill="#4b5563" font-family="Space Grotesk" font-size="11">Visualizer</text>
+
+      <!-- Peer communication arrows -->
+      <path d="M260 225 Q400 255 340 225" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="none" stroke-dasharray="3,3"/>
+      <path d="M480 225 Q400 255 460 225" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="none" stroke-dasharray="3,3"/>
+      <text x="295" y="254" text-anchor="middle" fill="#4b5563" font-family="Space Grotesk" font-size="10">talk to each other directly</text>
+    
+</svg>

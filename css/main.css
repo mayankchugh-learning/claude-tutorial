@@ -389,6 +389,22 @@ pre code {
   text-align: center;
 }
 
+.compare-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 1.25rem 0;
+}
+.compare-columns > div {
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 1rem 1.15rem;
+  font-size: 14px;
+}
+.compare-columns strong { display: block; margin-bottom: 0.35rem; font-size: 13px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-3); }
+@media (max-width: 640px) { .compare-columns { grid-template-columns: 1fr; } }
+
 .tag-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0; }
 .tag {
   font-size: 12px; font-weight: 500;
