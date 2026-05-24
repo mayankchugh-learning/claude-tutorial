@@ -125,14 +125,92 @@ See **Quick start** above. The repo includes `.nojekyll` so GitHub does not run 
 
 ---
 
-## Option E — Vercel
+## Option E — Vercel (recommended if you want a separate host from GitHub Pages)
 
 | Item | Value |
 |------|--------|
-| Framework | Other / None |
-| Output | root (`.`) |
+| Cost | **Hobby (free)** for personal projects |
+| Framework preset | **Other** (no framework) |
+| Build command | *(empty)* |
+| Output / root directory | **`.`** (repository root) |
+| Install command | *(empty — no `package.json`)* |
 
-`vercel.json` sets an empty build and root output. Import the GitHub repo and deploy.
+This repo already includes `vercel.json`, which tells Vercel there is no build and to publish from the root:
+
+```json
+{
+  "buildCommand": "",
+  "outputDirectory": "."
+}
+```
+
+You do **not** need Node, npm, or a framework for this site.
+
+### Prerequisites
+
+- Code on GitHub: https://github.com/mayankchugh-learning/claude-tutorial  
+- A [Vercel account](https://vercel.com/signup) (sign up with **GitHub** so import is one click)
+
+### Steps (dashboard — easiest)
+
+1. Go to [vercel.com/new](https://vercel.com/new) and sign in with GitHub if prompted.
+2. **Import** the repository `mayankchugh-learning/claude-tutorial`.
+3. On **Configure Project**, confirm:
+
+   | Field | Value |
+   |-------|--------|
+   | Project Name | `claude-tutorial` (or any name — affects `*.vercel.app` URL) |
+   | Framework Preset | **Other** |
+   | Root Directory | `./` (leave default) |
+   | Build Command | *(override off or empty)* |
+   | Output Directory | `.` or leave as detected from `vercel.json` |
+   | Install Command | *(empty)* |
+
+4. **Environment variables:** none required for this static site — skip.
+5. Click **Deploy**. First deploy usually finishes in under a minute.
+6. Vercel shows a live URL, e.g.  
+   `https://claude-tutorial.vercel.app`  
+   (exact subdomain depends on project name and availability).
+
+### After the first deploy
+
+- **Production:** every `git push` to `main` triggers a new production deploy automatically.
+- **Preview:** pushes to other branches and pull requests get their own preview URLs (useful for reviewing changes before merging).
+- **Custom domain:** Project → **Settings** → **Domains** → add your domain and follow DNS instructions.
+
+### Optional — deploy from your PC with Vercel CLI
+
+Useful for a one-off deploy without changing Git, or to test Vercel before connecting the repo.
+
+```powershell
+npm install -g vercel
+cd c:\githunb\MayankAggarwal\claude-tutorial
+vercel login
+vercel          # first time: follow prompts, link to existing project or create new
+vercel --prod   # production deploy
+```
+
+The CLI reads `vercel.json` in this folder.
+
+### Vercel vs GitHub Pages (same repo, both free)
+
+| | GitHub Pages | Vercel |
+|---|--------------|--------|
+| URL | `mayankchugh-learning.github.io/claude-tutorial/` | `your-project.vercel.app` |
+| Setup | Repo Settings → Pages / Actions | Import repo on vercel.com |
+| PR previews | Limited | Built-in preview URLs |
+| Config in repo | `.github/workflows/pages.yml`, `.nojekyll` | `vercel.json` |
+
+You can run **both** at once: same GitHub repo, two hosts, no conflict.
+
+### Vercel troubleshooting
+
+| Problem | Fix |
+|---------|-----|
+| Build fails looking for npm | Set Framework to **Other**; clear Install and Build commands |
+| 404 on `/course.html` | Ensure **Output Directory** is `.`, not `public` or `dist` |
+| Wrong files deployed | **Root Directory** must be repo root, not a subfolder |
+| `vercel.json` ignored | Re-import project or set the same values manually in Project Settings → General |
 
 ---
 
@@ -144,9 +222,9 @@ See **Quick start** above. The repo includes `.nojekyll` so GitHub does not run 
 | Cloudflare Pages | CDN + preview URLs | Yes | Yes |
 | Netlify | Simple UI + `netlify.toml` | Yes | Yes |
 | Render | Render stack / MCP | Yes | Yes |
-| Vercel | Hobby static sites | Yes | Yes |
+| Vercel | Hobby static sites, PR preview URLs | Yes | Yes |
 
-**Recommendation:** **GitHub Pages** with the included Actions workflow if the repo lives on GitHub. **Cloudflare Pages** if you want the strongest CDN and PR previews.
+**Recommendation:** **GitHub Pages** with the included Actions workflow if the repo lives on GitHub. **Vercel** if you want a short `*.vercel.app` URL and automatic preview deploys for branches/PRs. **Cloudflare Pages** if you want the strongest CDN and PR previews.
 
 ---
 
@@ -184,6 +262,8 @@ Wait 1–3 minutes (GitHub Pages can take up to 10 minutes on first publish).
 | GitHub URL includes repo name | Project site URL | Use `https://user.github.io/REPO_NAME/` (expected) |
 | Render build fails | Empty build rejected | Use `echo "Static HTML — no build"` |
 | Workflow not running | Wrong branch | Workflow triggers on `main`; rename branch or edit `pages.yml` |
+| Vercel runs `npm install` / build fails | Framework auto-detected | Set preset to **Other**; empty build and install commands |
+| Vercel 404 on pages | Wrong output directory | Output = `.`; check `vercel.json` |
 
 ---
 
