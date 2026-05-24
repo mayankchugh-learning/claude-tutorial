@@ -1,0 +1,22 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*~
+
+# IDE
+.idea/
+.vscode/
+*.code-workspace
+
+# Secrets (this site has none by design — keep it that way)
+.env
+.env.*
+*.pem
+credentials.json
+
+# Local preview / tooling (if you add any later)
+node_modules/
+dist/
+.cache/

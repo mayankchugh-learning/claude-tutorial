@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Claude Complete Course — Learn Claude</title>
+  <meta name="description" content="Full Claude course: surfaces, agentic loop, .claude folder, CLAUDE.md, context, skills, hooks, MCP, sub-agents, and capstone." />
+  <meta name="theme-color" content="#c45c3e" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="index.html">Learn<span>Claude</span></a>
+      <nav class="header-nav">
+        <a href="index.html">Home</a>
+        <a href="slash-commands.html">Slash Commands</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="course-layout">
+    <aside class="sidebar">
+      <div class="sidebar-search">
+        <input type="search" id="sidebar-search" placeholder="Search modules…" aria-label="Search modules" />
+      </div>
+      <nav>
+        <div class="sidebar-group">
+          <div class="sidebar-group-title">Fundamentals</div>
+          <a class="sidebar-link" href="#intro">01 · Introduction</a>
+          <a class="sidebar-link" href="#what-is-claude">02 · What is Claude?</a>
+          <a class="sidebar-link" href="#claude-surfaces">03 · Claude Surfaces</a>
+          <a class="sidebar-link" href="#agentic-loop">04 · Agentic Loop</a>
+        </div>
+        <div class="sidebar-group">
+          <div class="sidebar-group-title">Getting Started</div>
+          <a class="sidebar-link" href="#installation">05 · Installation</a>
+          <a class="sidebar-link" href="#dot-claude">06 · .claude Folder</a>
+          <a class="sidebar-link" href="#claude-md">07 · CLAUDE.md</a>
+        </div>
+        <div class="sidebar-group">
+          <div class="sidebar-group-title">Power Features</div>
+          <a class="sidebar-link" href="#context">08 · Context Management</a>
+          <a class="sidebar-link" href="#skills">09 · Skills</a>
+          <a class="sidebar-link" href="#hooks">10 · Hooks</a>
+          <a class="sidebar-link" href="#mcp">11 · MCP</a>
+        </div>
+        <div class="sidebar-group">
+          <div class="sidebar-group-title">Advanced</div>
+          <a class="sidebar-link" href="#sub-agents">12 · Sub-agents</a>
+          <a class="sidebar-link" href="#agent-teams">13 · Agent Teams</a>
+          <a class="sidebar-link" href="#plugins">14 · Plugins &amp; Loops</a>
+          <a class="sidebar-link" href="#capstone">15 · Capstone</a>
+        </div>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+
+      <!-- 01 INTRO -->
+      <section class="lesson-section" id="intro">
+        <p class="lesson-eyebrow">Module 01</p>
+        <h2>Introduction</h2>
+        <p>
+          In 2026, a clear divide is forming. On one side, people use Claude Code to build applications,
+          automate workflows, and ship work that used to take weeks. On the other side, people still do
+          everything manually — limited by what they can accomplish alone.
+        </p>
+        <p>
+          This course is designed to put you on the right side of that divide. It is a complete
+          beginner-to-advanced guide covering every major Claude concept with real working examples.
+          Whether you come from a technical or non-technical background, the goal is the same:
+          understand the system deeply enough to use it daily and explain it to others.
+        </p>
+        <div class="callout callout-info">
+          <strong>What you will learn</strong>
+          <p>The agentic loop, installation on all operating systems, slash commands, permission modes,
+          the <code>.claude</code> folder, CLAUDE.md, context management, skills, hooks, MCP,
+          sub-agents, agent teams, plugins, scheduling, and a capstone full-stack build.</p>
+        </div>
+        <div class="tag-row">
+          <span class="tag">Claude.ai</span>
+          <span class="tag">Claude Code</span>
+          <span class="tag">MCP</span>
+          <span class="tag">Agentic AI</span>
+          <span class="tag">Skills &amp; Hooks</span>
+        </div>
+      </section>
+
+      <!-- 02 WHAT IS CLAUDE -->
+      <section class="lesson-section" id="what-is-claude">
+        <p class="lesson-eyebrow">Module 02</p>
+        <h2>What is Claude?</h2>
+        <p>
+          Claude is an AI assistant built by <strong>Anthropic</strong>, an AI research company
+          focused on safety and reliability. Anthropic was founded by researchers who previously
+          worked on large language models elsewhere; their mission is to build capable AI systems
+          that are trustworthy and aligned with human values.
+        </p>
+        <h3>Anthropic vs. the broader AI landscape</h3>
+        <p>
+          If ChatGPT made conversational AI mainstream through OpenAI, Claude is Anthropic's
+          equivalent product line. Both companies build large language models (LLMs), but Anthropic
+          emphasizes constitutional AI, safety research, and enterprise-grade reliability.
+        </p>
+        <h3>The Claude model family</h3>
+        <p>Claude models are organized into tiers, each optimized for different trade-offs:</p>
+        <table class="compare-table">
+          <thead>
+            <tr><th>Model</th><th>Strength</th><th>Best for</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Haiku</strong></td>
+              <td>Fastest, lowest cost</td>
+              <td>Quick tasks, sub-agents, high-volume automation</td>
+            </tr>
+            <tr>
+              <td><strong>Sonnet</strong></td>
+              <td>Balanced speed and intelligence</td>
+              <td>Daily coding, analysis, most Claude Code sessions</td>
+            </tr>
+            <tr>
+              <td><strong>Opus</strong></td>
+              <td>Most capable, deepest reasoning</td>
+              <td>Complex architecture, hard debugging, research</td>
+            </tr>
+          </tbody>
+        </table>
+        <h3>What is an LLM?</h3>
+        <p>
+          At its core, every Claude model is a <strong>Large Language Model</strong> — a neural
+          network trained on vast amounts of text (and increasingly images and code). Think of it
+          like a brain trained on books, documentation, and conversations. When you send a prompt,
+          the model predicts the most likely next tokens (words and symbols) to produce a coherent
+          response.
+        </p>
+        <p>
+          Claude, ChatGPT, and Gemini all work this way. The differences lie in training data,
+          safety tuning, context window size, tool use, and how each product wraps the model
+          in a user interface or agent runtime.
+        </p>
+        <div class="callout callout-tip">
+          <strong>Key insight</strong>
+          <p>Claude on the web is a conversation with a brain. Claude Code is that same brain
+          with hands — it can read files, run commands, and change your project.</p>
+        </div>
+      </section>
+
+      <!-- 03 SURFACES -->
+      <section class="lesson-section" id="claude-surfaces">
+        <p class="lesson-eyebrow">Module 03</p>
+        <h2>Claude Surfaces: Web, Desktop, and Code</h2>
+        <p>Claude is available in three primary forms. Understanding the distinction is essential.</p>
+        <table class="compare-table">
+          <thead>
+            <tr><th>Surface</th><th>What it is</th><th>Can access your files?</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Claude.ai</strong> (web)</td>
+              <td>Browser chat interface at claude.ai</td>
+              <td>No — unless you upload files manually</td>
+            </tr>
+            <tr>
+              <td><strong>Claude Desktop</strong></td>
+              <td>Native macOS / Windows app</td>
+              <td>Limited — chat + Cowork features; not full filesystem</td>
+            </tr>
+            <tr>
+              <td><strong>Claude Code</strong></td>
+              <td>Terminal / IDE agent</td>
+              <td>Yes — full read/write in your project directory</td>
+            </tr>
+          </tbody>
+        </table>
+        <h3>Claude.ai — the chat interface</h3>
+        <p>
+          Sign in at claude.ai with email, Google, or Apple. The interface is a text box where you
+          ask questions, upload documents, analyze data, write content, or get coding help. Free
+          and paid tiers (Pro, Max) unlock higher usage limits and advanced models.
+        </p>
+        <h3>Claude Desktop</h3>
+        <p>
+          The desktop app wraps the same Claude brain in a native window. It adds conveniences
+          like system notifications and quick access, but it is still fundamentally a chat product —
+          not a coding agent with shell access.
+        </p>
+        <h3>Claude Code — brain with hands</h3>
+        <p>
+          Claude Code installs on your machine and runs in your terminal or IDE. It connects to
+          Anthropic's API for the model, but executes locally: reading files, running bash commands,
+          installing packages, writing code, and iterating until the task is done.
+        </p>
+        <pre><code># Example: Claude Code can do what chat cannot
+You: "Create a Python script that generates a PDF explaining bubble sort"
+Claude Code:
+  1. Writes bubble_sort.py
+  2. pip install reportlab
+  3. Runs the script
+  4. Confirms output.pdf exists</code></pre>
+        <div class="callout callout-warn">
+          <strong>Remember</strong>
+          <p>Claude chat answers questions. Claude Code <em>does work</em>. That difference —
+          passive conversation vs. active agent — is the foundation of everything that follows.</p>
+        </div>
+      </section>
+
+      <!-- 04 AGENTIC LOOP -->
+      <section class="lesson-section" id="agentic-loop">
+        <p class="lesson-eyebrow">Module 04</p>
+        <h2>The Agentic Loop</h2>
+        <p>
+          The agentic loop is the most important concept in Claude Code. It explains why Claude
+          can autonomously complete multi-step tasks instead of giving you instructions to run
+          yourself.
+        </p>
+        <figure class="diagram">
+          <img src="assets/agentic_loop_flowchart.svg" alt="Claude Code agentic loop flowchart" />
+          <figcaption>The seven-step agentic loop: task → context → plan → act → observe → iterate → report</figcaption>
+        </figure>
+        <ol>
+          <li><strong>You give a task</strong> — a prompt or instruction in natural language.</li>
+          <li><strong>Read context</strong> — Claude loads relevant files, CLAUDE.md, conversation history, and tool definitions.</li>
+          <li><strong>Plan</strong> — it decides which tools and steps are needed.</li>
+          <li><strong>Act</strong> — it runs tools: read/write files, bash commands, web fetch, MCP calls.</li>
+          <li><strong>Observe</strong> — it reads the output of each action.</li>
+          <li><strong>Iterate</strong> — if the task is not complete, it loops back to plan/act/observe.</li>
+          <li><strong>Report</strong> — when done, it summarizes what was accomplished.</li>
+        </ol>
+        <p>
+          This loop runs automatically. You are not micromanaging each command — you are directing
+          an agent that thinks, acts, and self-corrects. Skills, hooks, MCP, and sub-agents all
+          plug into different stages of this loop.
+        </p>
+      </section>
+
+      <!-- 05 INSTALLATION -->
+      <section class="lesson-section" id="installation">
+        <p class="lesson-eyebrow">Module 05</p>
+        <h2>Installation &amp; Setup</h2>
+        <p>
+          Claude Code runs on Windows, macOS, and Linux. The recommended install is via the
+          official installer script in your terminal.
+        </p>
+        <h3>Windows (PowerShell)</h3>
+        <pre><code>irm https://claude.ai/install.ps1 | iex</code></pre>
+        <h3>macOS / Linux</h3>
+        <pre><code>curl -fsSL https://claude.ai/install.sh | bash</code></pre>
+        <h3>Verify installation</h3>
+        <pre><code>claude --version
+claude</code></pre>
+        <p>
+          On first run, Claude Code prompts you to authenticate with your Anthropic account.
+          You can use a Claude Pro/Max subscription or API billing.
+        </p>
+        <h3>System requirements</h3>
+        <ul>
+          <li>Node.js may be required depending on install method (native installer often bundles dependencies).</li>
+          <li>Git recommended for version-controlled projects.</li>
+          <li>A terminal: PowerShell, Terminal.app, or any Linux shell.</li>
+        </ul>
+        <h3>Running in VS Code / Cursor</h3>
+        <p>
+          Install the official Anthropic Claude Code extension from the marketplace.
+          It embeds Claude in your editor sidebar with the same agent capabilities as the terminal.
+        </p>
+        <h3>Permission modes</h3>
+        <p>Claude Code supports different autonomy levels:</p>
+        <ul>
+          <li><strong>Normal</strong> — asks before running potentially destructive commands.</li>
+          <li><strong>Plan mode</strong> — read-only; Claude plans but does not execute.</li>
+          <li><strong>Auto-accept</strong> — runs approved tool categories without repeated prompts.</li>
+        </ul>
+        <div class="callout callout-tip">
+          <strong>Path issues on Windows?</strong>
+          <p>If <code>claude</code> is not recognized after install, restart your terminal or add
+          the install directory to your PATH. Re-run the installer if needed.</p>
+        </div>
+      </section>
+
+      <!-- 06 DOT CLAUDE -->
+      <section class="lesson-section" id="dot-claude">
+        <p class="lesson-eyebrow">Module 06</p>
+        <h2>The .claude Folder</h2>
+        <p>
+          Every Claude Code project can contain a <code>.claude/</code> directory that configures
+          agents, skills, hooks, and settings for that workspace.
+        </p>
+        <pre><code>.claude/
+├── CLAUDE.md          # Project instructions (also at repo root)
+├── settings.json      # Local settings &amp; permissions
+├── hooks.json         # Hook event configuration
+├── hooks/             # Hook scripts (Python, shell, etc.)
+├── skills/            # Custom skills (SKILL.md files)
+└── agents/            # Sub-agent definitions</code></pre>
+        <h3>Key files explained</h3>
+        <ul>
+          <li><code>settings.json</code> — permission allowlists, model preferences, hook paths.</li>
+          <li><code>hooks.json</code> — maps events (PreToolUse, PostToolUse, SessionStart) to scripts.</li>
+          <li><code>skills/</code> — folders with SKILL.md playbooks invoked via slash commands.</li>
+          <li><code>agents/</code> — markdown files defining specialist sub-agents.</li>
+        </ul>
+        <p>
+          See the <a href="slash-commands.html">Slash Commands reference</a> for commands like
+          <code>/memory</code>, <code>/config</code>, <code>/status</code>, and <code>/doctor</code>
+          that interact with this folder.
+        </p>
+      </section>
+
+      <!-- 07 CLAUDE.MD -->
+      <section class="lesson-section" id="claude-md">
+        <p class="lesson-eyebrow">Module 07</p>
+        <h2>CLAUDE.md — Your Project Brain</h2>
+        <p>
+          <code>CLAUDE.md</code> is the single most important file in a Claude Code workflow.
+          It is loaded automatically at the start of every session and gives Claude permanent
+          context about your project.
+        </p>
+        <figure class="diagram">
+          <img src="assets/claude_md_project_brain.svg" alt="CLAUDE.md as project brain diagram" />
+          <figcaption>CLAUDE.md feeds rules, stack, and conventions into every session</figcaption>
+        </figure>
+        <h3>What to include</h3>
+        <ul>
+          <li>Project purpose and architecture overview</li>
+          <li>Tech stack (languages, frameworks, databases)</li>
+          <li>Coding conventions and naming patterns</li>
+          <li>Commands to build, test, and run</li>
+          <li>Things Claude should never do (e.g., commit without asking)</li>
+        </ul>
+        <pre><code># Example CLAUDE.md excerpt
+
+## Stack
+- Python 3.12, FastAPI, SQLite
+- Frontend: React + TypeScript
+
+## Commands
+- `pytest` — run tests
+- `uvicorn src.api:app --reload` — start API
+
+## Rules
+- Keep imports at top of file
+- Only commit when explicitly asked</code></pre>
+        <p>
+          Place CLAUDE.md at the repository root or in <code>.claude/CLAUDE.md</code>.
+          Claude merges both. Update it as your project evolves — it is living documentation
+          for your AI pair programmer.
+        </p>
+      </section>
+
+      <!-- 08 CONTEXT -->
+      <section class="lesson-section" id="context">
+        <p class="lesson-eyebrow">Module 08</p>
+        <h2>Context Management</h2>
+        <p>
+          Claude has a finite <strong>context window</strong> — the total amount of text (measured
+          in tokens) it can hold in working memory for one session. Managing context keeps Claude
+          sharp across long conversations.
+        </p>
+        <figure class="diagram">
+          <img src="assets/context_window_components.svg" alt="Context window components diagram" />
+          <figcaption>What fills the context window: system prompt, CLAUDE.md, tools, history, your message</figcaption>
+        </figure>
+        <h3>Token budgeting tips</h3>
+        <ul>
+          <li>Start fresh sessions for unrelated tasks.</li>
+          <li>Use sub-agents for deep exploration without polluting main context.</li>
+          <li>Reference files by path instead of pasting large blobs.</li>
+          <li>Keep CLAUDE.md focused — every line consumes tokens every session.</li>
+        </ul>
+        <h3>Compact, Clear, and Rewind</h3>
+        <figure class="diagram">
+          <img src="assets/compact_clear_rewind.svg" alt="Compact clear rewind diagram" />
+          <figcaption>Three tools to manage long sessions without starting over</figcaption>
+        </figure>
+        <ul>
+          <li><strong>/compact</strong> — summarizes older conversation to free space.</li>
+          <li><strong>/clear</strong> — wipes conversation history (keeps CLAUDE.md).</li>
+          <li><strong>/rewind</strong> — restores project files to a prior checkpoint (like undo for code).</li>
+        </ul>
+      </section>
+
+      <!-- 09 SKILLS -->
+      <section class="lesson-section" id="skills">
+        <p class="lesson-eyebrow">Module 09</p>
+        <h2>Skills — Reusable Playbooks</h2>
+        <p>
+          Skills are markdown instruction files (<code>SKILL.md</code>) that encode repeatable
+          workflows. Invoke them with a slash command instead of re-explaining the process every time.
+        </p>
+        <pre><code>.claude/skills/deploy/SKILL.md
+
+---
+name: deploy
+description: Deploy the app to staging
+---
+
+# Deploy to Staging
+1. Run `npm run build`
+2. Run `npm run test`
+3. Deploy with `npm run deploy:staging`
+4. Verify health endpoint</code></pre>
+        <p>
+          Skills live in <code>.claude/skills/</code> (project) or your user skills directory (global).
+          They cost zero tokens until invoked — Claude reads the skill only when you trigger it.
+        </p>
+        <div class="callout callout-info">
+          <strong>Skills vs. CLAUDE.md</strong>
+          <p>CLAUDE.md is always loaded. Skills are on-demand playbooks for specific workflows
+          like code review, deployment, or writing PR descriptions.</p>
+        </div>
+      </section>
+
+      <!-- 10 HOOKS -->
+      <section class="lesson-section" id="hooks">
+        <p class="lesson-eyebrow">Module 10</p>
+        <h2>Hooks — Automatic Background Scripts</h2>
+        <p>
+          Hooks run scripts automatically on Claude Code events — without using tokens or prompts.
+          They enforce standards, log activity, and guard security.
+        </p>
+        <figure class="diagram">
+          <img src="assets/hook_event_flow.svg" alt="Hook event flow diagram" />
+          <figcaption>Hooks fire on SessionStart, PreToolUse, PostToolUse, and other events</figcaption>
+        </figure>
+        <h3>Example: auto-format on file write</h3>
+        <pre><code>// hooks.json
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [{ "type": "command", "command": "python .claude/hooks/auto_format.py" }]
+      }
+    ]
+  }
+}</code></pre>
+        <h3>Common hook use cases</h3>
+        <ul>
+          <li>Auto-format Python/JS after every edit</li>
+          <li>Block dangerous commands (rm -rf, force push)</li>
+          <li>Log session activity to a file</li>
+          <li>Run tests after code changes</li>
+        </ul>
+      </section>
+
+      <!-- 11 MCP -->
+      <section class="lesson-section" id="mcp">
+        <p class="lesson-eyebrow">Module 11</p>
+        <h2>MCP — Model Context Protocol</h2>
+        <p>
+          MCP (Model Context Protocol) is an open standard that lets Claude connect to external
+          tools and data sources: GitHub, Slack, databases, browsers, custom APIs, and more.
+        </p>
+        <figure class="diagram">
+          <img src="assets/mcp_architecture.svg" alt="MCP architecture diagram" />
+          <figcaption>Claude Code ↔ MCP servers ↔ external services</figcaption>
+        </figure>
+        <h3>How it works</h3>
+        <ol>
+          <li>You configure MCP servers in Claude Code settings.</li>
+          <li>Each server exposes tools (e.g., <code>create_issue</code>, <code>query_db</code>).</li>
+          <li>Claude discovers and calls these tools during the agentic loop.</li>
+        </ol>
+        <pre><code>// Example MCP config (conceptual)
+{
+  "mcpServers": {
+    "github": { "command": "npx", "args": ["-y", "@modelcontextprotocol/server-github"] },
+    "postgres": { "command": "npx", "args": ["-y", "@modelcontextprotocol/server-postgres", "postgresql://..."] }
+  }
+}</code></pre>
+        <p>
+          MCP turns Claude from a local coding agent into a hub for your entire toolchain.
+          Combine it with live web search and browser automation for research-heavy tasks.
+        </p>
+      </section>
+
+      <!-- 12 SUB-AGENTS -->
+      <section class="lesson-section" id="sub-agents">
+        <p class="lesson-eyebrow">Module 12</p>
+        <h2>Sub-agents — Specialist Workers</h2>
+        <p>
+          Sub-agents are separate Claude sessions spawned for focused tasks. They run in
+          <strong>isolated context windows</strong>, so exploration does not bloat your main conversation.
+        </p>
+        <figure class="diagram">
+          <img src="assets/sub_agent_architecture.svg" alt="Sub-agent architecture diagram" />
+          <figcaption>Main session delegates to specialist sub-agents with clean context</figcaption>
+        </figure>
+        <h3>Benefits</h3>
+        <ul>
+          <li>Use cheaper/faster models (Haiku) for simple sub-tasks.</li>
+          <li>Parallel exploration of different parts of a codebase.</li>
+          <li>Main session stays focused on orchestration.</li>
+        </ul>
+        <p>
+          Define agents in <code>.claude/agents/</code> with a name, description, and instructions.
+          Claude Code's Task tool spawns them automatically when appropriate, or you can request one explicitly.
+        </p>
+      </section>
+
+      <!-- 13 AGENT TEAMS -->
+      <section class="lesson-section" id="agent-teams">
+        <p class="lesson-eyebrow">Module 13</p>
+        <h2>Agent Teams — Parallel Coordination</h2>
+        <p>
+          Agent teams go beyond sub-agents: multiple Claude instances work in parallel on the
+          same project, coordinating directly with each other.
+        </p>
+        <figure class="diagram">
+          <img src="assets/agent_teams_vs_sub_agents.svg" alt="Agent teams vs sub-agents diagram" />
+          <figcaption>Sub-agents report to main session; agent teams coordinate peer-to-peer</figcaption>
+        </figure>
+        <table class="compare-table">
+          <thead>
+            <tr><th>Feature</th><th>Sub-agents</th><th>Agent Teams</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Context</td><td>Isolated, reports back</td><td>Shared project, peer coordination</td></tr>
+            <tr><td>Best for</td><td>Focused sub-tasks</td><td>Large parallel builds</td></tr>
+            <tr><td>Model choice</td><td>Can use Haiku per agent</td><td>Configurable per teammate</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- 14 PLUGINS -->
+      <section class="lesson-section" id="plugins">
+        <p class="lesson-eyebrow">Module 14</p>
+        <h2>Plugins, Scheduling &amp; Loops</h2>
+        <h3>Plugins</h3>
+        <p>
+          Plugins bundle skills, agents, hooks, and MCP configs into installable packages.
+          Install a plugin once and gain an entire capability set — code review, deployment
+          pipelines, security auditing, and more.
+        </p>
+        <h3>Scheduling &amp; loops</h3>
+        <p>
+          Claude Code supports automated recurring runs — useful for nightly test fixes,
+          dependency updates, or monitoring tasks.
+        </p>
+        <figure class="diagram">
+          <img src="assets/scheduling_three_methods.svg" alt="Scheduling methods diagram" />
+          <figcaption>Three ways to automate Claude Code on a schedule</figcaption>
+        </figure>
+        <ul>
+          <li><strong>Cron / Task Scheduler</strong> — run <code>claude -p "your prompt"</code> on a timer.</li>
+          <li><strong>CI/CD integration</strong> — GitHub Actions with Claude for PR review.</li>
+          <li><strong>Loop skills</strong> — recurring local intervals for monitored background work.</li>
+        </ul>
+      </section>
+
+      <!-- 15 CAPSTONE -->
+      <section class="lesson-section" id="capstone">
+        <p class="lesson-eyebrow">Module 15</p>
+        <h2>Capstone Project — Task Manager App</h2>
+        <p>
+          The capstone ties every module together. You build a full-stack productivity app from
+          a plain-English spec using Claude Code end to end.
+        </p>
+        <h3>Project spec (starter)</h3>
+        <pre><code>Build a Task Manager with:
+- React frontend (TypeScript)
+- FastAPI backend (Python)
+- JSON file storage
+- CLI + REST API
+- Tests with pytest</code></pre>
+        <h3>Concepts applied</h3>
+        <ul>
+          <li><strong>CLAUDE.md</strong> — define stack, commands, and conventions upfront.</li>
+          <li><strong>Agentic loop</strong> — Claude plans, scaffolds, implements, and tests.</li>
+          <li><strong>Sub-agents</strong> — separate test-writer and security-auditor agents.</li>
+          <li><strong>Hooks</strong> — auto-format Python after edits.</li>
+          <li><strong>Skills</strong> — <code>/build-app</code> skill for repeatable scaffolding.</li>
+        </ul>
+        <p>
+          A reference implementation lives in this workspace in the
+          <code>Task-Manager-App</code> project folder. Open it in Claude Code and explore
+          the <code>.claude/</code> configuration to see every concept in production use.
+        </p>
+        <div class="callout callout-tip">
+          <strong>Your turn</strong>
+          <p>Pick one thing you want to build — a dashboard, automation script, or internal tool.
+          Write a CLAUDE.md, install Claude Code, and describe the app in plain English.
+          Let the agentic loop do the rest.</p>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <footer class="footer">
+    <p>Curated by Mayank Chugh · <a href="index.html">Back to home</a></p>
+  </footer>
+  <script src="js/main.js"></script>
+</body>
+</html>

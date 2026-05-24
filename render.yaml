@@ -1,0 +1,9 @@
+# Render Blueprint — static site, no build
+# Dashboard: New → Blueprint → connect repo, or use Render MCP create_static_site
+services:
+  - type: web
+    name: learn-claude
+    runtime: static
+    buildCommand: 'echo "Static HTML — no build"'
+    staticPublishPath: .
+    autoDeploy: true
