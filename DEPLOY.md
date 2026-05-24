@@ -25,11 +25,16 @@ git commit -m "Initial commit: Learn Claude static course"
 
 # Create a new empty repo on GitHub (e.g. claude-tutorial), then:
 git branch -M main
-git remote add origin https://github.com/YOUR_USERNAME/claude-tutorial.git
+git remote add origin https://github.com/mayankchugh-learning/claude-tutorial.git
 git push -u origin main
 ```
 
-Replace `YOUR_USERNAME` and the repo name with yours.
+If you already added the wrong URL (e.g. copied `YOUR_USERNAME` literally), fix it:
+
+```powershell
+git remote set-url origin https://github.com/mayankchugh-learning/claude-tutorial.git
+git push -u origin main
+```
 
 ### 2. Enable GitHub Pages (GitHub Actions)
 
@@ -38,7 +43,7 @@ Replace `YOUR_USERNAME` and the repo name with yours.
    - **Source:** **GitHub Actions** (not “Deploy from a branch”).
 3. Push to `main` — the workflow `.github/workflows/pages.yml` deploys the site automatically.
 4. After 1–3 minutes, the site is live at:
-   - `https://YOUR_USERNAME.github.io/claude-tutorial/`
+   - `https://mayankchugh-learning.github.io/claude-tutorial/`
 
 **Alternative (branch deploy):** Source = **Deploy from a branch**, branch `main`, folder **`/ (root)`**. The Actions workflow is still recommended for clearer deploy history.
 
